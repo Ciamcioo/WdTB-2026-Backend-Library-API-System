@@ -14,7 +14,7 @@
 <div class="wrap">
 <div class="top">
   <a class="logo" href="index.html"><img src="assets/merito-logo.png" alt="Uniwersytet WSB Merito Wrocław"></a>
-  <nav class="jump" aria-label="Dokumentacja"><a href="index.html">Start</a><a href="lab01.html">LAB 01</a><span class="disabled" aria-disabled="true" title="Instrukcja pojawi się przed zajęciami">LAB 02</span><a href="wymagania.html">Wymagania</a><a href="zasady.html">Zasady</a><a href="reguly.html">Reguły</a><a href="pomysl.html">Pomysł</a><a href="zespol.html" aria-current="page">Praca w zespole</a><a href="roadmapa.html">Roadmapa</a><button class="theme-toggle" type="button" aria-label="Przełącz motyw jasny lub ciemny">Motyw</button></nav>
+  <nav class="jump" aria-label="Dokumentacja"><a href="index.html">Start</a><a href="lab01.html">LAB 01</a><a href="lab02.html">LAB 02</a><a href="wymagania.html">Wymagania</a><a href="zasady.html">Zasady</a><a href="reguly.html">Reguły</a><a href="pomysl.html">Pomysł</a><a href="zespol.html" aria-current="page">Praca w zespole</a><a href="roadmapa.html">Roadmapa</a><button class="theme-toggle" type="button" aria-label="Przełącz motyw jasny lub ciemny">Motyw</button></nav>
 </div>
 <main class="doc"><article class="md">
 <h1>Praca w zespole</h1>
@@ -29,6 +29,7 @@
 </ul>
 <h2>Kto co robi</h2>
 <p>Nie ma przydzielonych ról. Pracujecie razem nad całym projektem i dzielicie pracę na zajęciach, np. według tabel czy funkcji.</p>
+<p><strong>Na zajęciach pracujecie na jednym laptopie</strong> osoby hostującej.</p>
 <h2>Przepływ pracy</h2>
 <pre><code>Git → Pull  →  zmiany w kodzie  →  Git → Commit  →  Push  →  zielone „Testy i reguły”
 </code></pre>
@@ -39,7 +40,11 @@
 </ol>
 <h2>Konflikty w Gicie</h2>
 <ul>
-<li><strong><code>data.sql</code> edytuje cały zespół</strong>, więc konflikty są tu najczęstsze. Dopisujcie dane na końcu sekcji swojej tabeli.</li>
+<li><strong>Każda osoba ma własne pliki.</strong> Dzielicie pracę po tabelach lub funkcjach; klasy innej osoby zmieniacie po uzgodnieniu z nią.</li>
+<li><strong><code>data.sql</code> edytuje cały zespół</strong>, więc konflikty są tu najczęstsze. Jedna osoba dopisuje najpierw nagłówki sekcji
+  (<code>-- ===== tabela (osoba) =====</code>) dla wszystkich tabel i wysyła je jednym commitem; potem każda osoba wypełnia tylko swoje sekcje (szczegóły: <a href="lab02.html">LAB 02</a>, krok C3).</li>
+<li><strong>Nowe materiały z szablonu</strong> pobiera osoba hostująca przyciskiem <em>Sync fork → Update branch</em> na GitHubie, a reszta robi <em>Git → Pull</em>.
+  Przy konflikcie nie klikajcie <em>Discard commits</em>; zgłoście go prowadzącemu.</li>
 <li>Przed <em>Push</em> zróbcie <em>Git → Pull</em>. Jeśli IntelliJ pokaże konflikt, rozwiążcie go razem (<em>Merge…</em>) i dopiero wtedy wyślijcie zmiany.</li>
 </ul>
 <h2>Zrozumienie projektu</h2>

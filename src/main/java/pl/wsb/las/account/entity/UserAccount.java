@@ -1,15 +1,24 @@
-package pl.wsb.las.account.domain;
+package pl.wsb.las.account.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import pl.wsb.las.account.domain.AccountRole;
+import pl.wsb.las.rent.entity.Rent;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Konto użytkownika: jedyna tabela, którą dostajecie gotową. Każdy projekt ma użytkowników.
@@ -20,6 +29,8 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "user_account")
+@Getter
+@Setter
 public class UserAccount {
 
     @Id
@@ -39,6 +50,9 @@ public class UserAccount {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Rent> rents;
+
     protected UserAccount() {
     }
 
@@ -47,25 +61,5 @@ public class UserAccount {
         this.displayName = displayName;
         this.role = role;
         this.createdAt = LocalDateTime.now();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public AccountRole getRole() {
-        return role;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 }

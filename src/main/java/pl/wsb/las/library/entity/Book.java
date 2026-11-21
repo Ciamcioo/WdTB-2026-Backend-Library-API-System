@@ -4,9 +4,21 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
+import pl.wsb.las.rent.entity.Rent;
+
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Book {
 
     @Id
@@ -15,8 +27,9 @@ public class Book {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "author", nullable = false)
-    private String author;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", nullable = false)
+    private Author author;
 
     @Column(name = "pages", nullable = false)
     private Long pages;
@@ -28,64 +41,10 @@ public class Book {
     @Column(name = "type")
     private Type type;
 
+    @ManyToMany(mappedBy = "books")
+    private List<Rent> rents;
+
     public Book() {
         // required by JPA
-    }
-
-
-    public void setId(long isbn) {
-        this.isbn = isbn;
-    }
-
-    public long getId() {
-        return isbn;
-    }
-
-    public Long getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(Long isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public Long getPages() {
-        return pages;
-    }
-
-    public void setPages(Long pages) {
-        this.pages = pages;
-    }
-
-    public Integer getPublishYear() {
-        return publishYear;
-    }
-
-    public void setPublishYear(Integer publishYear) {
-        this.publishYear = publishYear;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
     }
 }

@@ -1,4 +1,4 @@
-package pl.wsb.las.library.entity;
+package pl.wsb.las.account.entity;
 
 import jakarta.persistence.Embeddable;
 
